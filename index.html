@@ -16,83 +16,62 @@
 
 body {
   background: transparent;
-  font-family: sans-serif;
 }
 
-/* Slider Container */
+/* Slider */
 .slider {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  max-width: 100%;
   overflow: hidden;
 }
 
-/* Slides */
+/* Slide */
 .slide {
-  position: absolute;
+  display: none;
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .slide.current {
-  opacity: 1;
+  display: block;
 }
 
-/* 圖片設定 */
-.slide:nth-child(1) {
-  background-image: url("鄰人_陰影_睜眼.png");
-}
-
-.slide:nth-child(2) {
-  background-image: url("鄰人_陰影_拘束.png");
+/* 讓圖片完整顯示 */
+.slide img {
+  width: 100%;
+  height: auto;   /* 保持比例 */
+  display: block;
 }
 
 /* Buttons */
 .buttons {
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.slider:hover .buttons {
-  opacity: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .buttons button {
+  pointer-events: all;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   border: none;
   border-radius: 50%;
   background: rgba(0,0,0,0.4);
   color: white;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
+#prev { left: 10px; }
+#next { right: 10px; }
 
 .buttons button:hover {
   background: rgba(0,0,0,0.7);
-}
-
-#prev {
-  left: 10px;
-}
-
-#next {
-  right: 10px;
 }
 </style>
 </head>
@@ -100,8 +79,12 @@ body {
 <body>
 
 <div class="slider">
-  <div class="slide current"></div>
-  <div class="slide"></div>
+  <div class="slide current">
+    <img src="鄰人_陰影_睜眼.png" alt="">
+  </div>
+  <div class="slide">
+    <img src="鄰人_陰影_拘束.png" alt="">
+  </div>
 
   <div class="buttons">
     <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
